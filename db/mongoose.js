@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
-const uri = "mongodb://localhost:27017/guvi"
+const dotenv=require("dotenv")
+dotenv.config({path:'./config.env'})
+const uri = process.env.DATABASE;
+// "mongodb://localhost:27017/guvi"
 
 const connectDB = async()=>{
     mongoose.connect(uri,()=>{
@@ -7,4 +10,4 @@ const connectDB = async()=>{
     })
 }
 
-module.exports = connectDB;
+module.exports = connectDB; 
