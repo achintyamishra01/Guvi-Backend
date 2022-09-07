@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const connectDB = require('./db/mongoose');
-const path =require('path')
+const router = require("./routes/user");
 dotenv.config({path:'../config.env'})
 connectDB();
 
@@ -13,11 +13,11 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 
-app.use('/api/',require('./routes/user'));
-
 app.get("/",(req,res)=>{
     res.json("server started")
 })
+app.use('/api/',require('./routes/user'));
+app.use(router);
 
 
 
