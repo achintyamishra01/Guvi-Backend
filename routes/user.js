@@ -56,7 +56,9 @@ router.post('/userInfo',async(req,res)=>{
     res.status(200).json({success:true,person:person}); 
 });
 
-
+router.get('/',(req,res)=>{
+    res.send("Hello")
+})
 router.post('/register',async (req,res)=>{
     var check = req.body.email;
     var aadmi = await user.findOne({email:check});
